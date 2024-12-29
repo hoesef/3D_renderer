@@ -6,4 +6,4 @@ build/debug/
 /*.exe
 /*.dll
 
-src/*
+src_old/*

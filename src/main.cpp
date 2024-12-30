@@ -6,9 +6,11 @@ int main() {
     const int imageWidth = 255;
     const int imageHeight = 255;
 
-    std::ofstream imageFile("image.ppm");
+    std::ofstream imageFile("images/image.ppm", std::ios::binary);
 
-    imageFile << "P3\n" << imageWidth << " " << imageHeight << "\n255\n";
+    if (imageFile.fail()) {return -1;}
+
+    imageFile << "P6\n" << imageWidth << " " << imageHeight << "\n255\n";
 
     for (int j = 0; j < imageHeight; j++) {
 
@@ -16,17 +18,20 @@ int main() {
 
         for (int i = 0; i < imageWidth; i++) {
 
-            auto r = double(i) / (imageWidth-1);
-            auto g = double(j) / (imageHeight-1);
-            auto b = 0;
+            auto r = float(i) / (imageWidth-1);
+            auto g = float(j) / (imageHeight-1);
+            auto b = 0.0f;
 
-            int rbyte = int(255.99 * r);
-            int gbyte = int(255.99 * g);
-            int bbyte = int(255.99 * b);
-
-            imageFile << rbyte << " " << gbyte << " " << bbyte << "\n";
+            imageFile << (unsigned char)(255.99 * r);
+            imageFile << (unsigned char)(255.99 * g);
+            imageFile << (unsigned char)(255.99 * b);
 
         }
     }
 
+    imageFile.close();
+
+    std::cout << "\nFloat: " << sizeof(float) << "\nDouble: " << sizeof(double) <<"\n";
+
+    return 0;
 }

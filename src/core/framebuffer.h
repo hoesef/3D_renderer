@@ -2,10 +2,10 @@
 #define FRAMEBUFFER_H
 
 typedef struct {
-    float red;
-    float green;
-    float blue;
-    float depth;
+    float red = 0.0f;
+    float green = 0.0f;
+    float blue = 0.0f;
+    float depth = 0.0f;
 } Pixel;
 
 class FrameBuffer {

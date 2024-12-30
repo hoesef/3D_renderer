@@ -1,9 +1,10 @@
+# Ignore VScode congifs
 .vscode/
-build/debug/
 
+# Ignore build artifacts
 /build/
 /*.o
 /*.exe
 /*.dll
 
-src_old/*
+src_old/

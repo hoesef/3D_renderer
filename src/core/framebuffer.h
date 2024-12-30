@@ -32,7 +32,7 @@ class FrameBuffer {
             if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
                 return -1;
             }
-
+            
             framebufer[y * width + x].depth = depth;
 
             return 0;

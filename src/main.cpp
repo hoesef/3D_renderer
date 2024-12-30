@@ -1,12 +1,15 @@
 #include <iostream>
-#include <fstream>
+
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 #include "core\framebuffer.h"
+#include "core\linedrawer.h"
 
 int main() {
 
-    const int imageWidth = 255;
-    const int imageHeight = 255;
+    const int imageWidth = 512;
+    const int imageHeight = 512;
 
     FrameBuffer fb = FrameBuffer(imageWidth, imageHeight);
     char filename[] = "image.ppm";
@@ -26,6 +29,15 @@ int main() {
         }
     }
 
+    for (float i = 0; i < M_PI * 2; i += M_PI / 32.0f) {
+
+        float x = cos(i);
+        float y = sin(i);
+
+        drawline(fb, 256 + (int)(48.0f*x), 256 + (int)(48.0f*y), 256 + (int)(240.0f*x), 256 + (int)(240.0f*y));
+    }
+
+    
     fb.writeRGB(filename);
 
     return 0;

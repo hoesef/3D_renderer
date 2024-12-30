@@ -1,0 +1,45 @@
+#ifndef FRAMEBUFFER_H
+#define FRAMEBUFFER_H
+
+typedef struct {
+    float red;
+    float green;
+    float blue;
+    float depth;
+} Pixel;
+
+class FrameBuffer {
+
+    private:
+        Pixel* framebufer;
+
+    public:
+        int width;
+        int height;
+        FrameBuffer(const int width, const int height);
+        inline int plotPixel(int x, int y, float red, float green, float blue) {
+            if (!(0 <= x < width) || !(0 <= y < height)) {
+                return -1;
+            }
+
+            framebufer[y * width + x].red = red;
+            framebufer[y * width + x].green = green;
+            framebufer[y * width + x].blue = blue;
+
+            return 0;
+        };
+        inline int plotDepth(int x, int y, float depth) {
+            if (!(0 <= x < width) || !(0 <= y < height)) {
+                return -1;
+            }
+
+            framebufer[y * width + x].depth = depth;
+
+            return 0;
+        };
+        int writeRGB(char* filename);
+        int writeDepth(char* filename);
+
+};
+
+#endif

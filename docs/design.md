@@ -25,3 +25,6 @@ The frmaebuffer should be an array of pixels width x height in size. It should h
     - write the rbg values to a PPM file
 - wirteDepth
     - write the depth values to a (grayscale) PPM file
+
+# Linedrawer
+I will write 2 line drawing algorithms, first using DDA, then using int only.

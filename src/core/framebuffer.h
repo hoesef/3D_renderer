@@ -18,7 +18,7 @@ class FrameBuffer {
         int height;
         FrameBuffer(const int width, const int height);
         inline int plotPixel(int x, int y, float red, float green, float blue) {
-            if (!(0 <= x < width) || !(0 <= y < height)) {
+            if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
                 return -1;
             }
 
@@ -29,7 +29,7 @@ class FrameBuffer {
             return 0;
         };
         inline int plotDepth(int x, int y, float depth) {
-            if (!(0 <= x < width) || !(0 <= y < height)) {
+            if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
                 return -1;
             }
 
